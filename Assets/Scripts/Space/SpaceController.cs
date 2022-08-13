@@ -8,13 +8,26 @@ public class SpaceController : ObjectController<SpaceController, SpaceModel, ISp
 {
 
     float movSpeed = 4f;
-    public void OnMoveSpace()
+    public void MoveSpace()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
 
         Vector2 direction = new Vector2(horizontalInput, 0).normalized;
 
         _view.transform.Translate(direction * movSpeed * Time.deltaTime);
+    }
+
+    public void Shoot()
+    {
+        //GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+
+        //GameObject bullet = ObjectPool.instance.GetPooledObject();
+
+        //if (bullet != null)
+        //{
+        //    bullet.transform.position = firepoint.position;
+        //    bullet.SetActive(true);
+        //}
     }
 
 }
