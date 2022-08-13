@@ -18,5 +18,10 @@ namespace Agate.MVC.Core
         {
             yield return null;
         }
+
+        public IEnumerator BaseConnector()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
