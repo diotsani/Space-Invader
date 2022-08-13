@@ -6,13 +6,14 @@ using Agate.MVC.Core;
 
 public class SpaceView : ObjectView<ISpaceModel>
 {
+    //[SerializeField] private GameObject _space;
     protected override void InitRenderModel(ISpaceModel model)
     {
-        throw new System.NotImplementedException();
+        
     }
 
     protected override void UpdateRenderModel(ISpaceModel model)
     {
-        throw new System.NotImplementedException();
+        
     }
 }
