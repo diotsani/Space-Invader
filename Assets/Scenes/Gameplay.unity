@@ -364,9 +364,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Space
       objectReference: {fileID: 0}
+    - target: {fileID: 7701082247720502107, guid: bb233996dae83184597d364720df3381, type: 3}
+      propertyPath: _speed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7701082247720502109, guid: bb233996dae83184597d364720df3381, type: 3}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7701082247720502109, guid: bb233996dae83184597d364720df3381, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7701082247720502109, guid: bb233996dae83184597d364720df3381, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7701082247720502109, guid: bb233996dae83184597d364720df3381, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 7701082247720502109, guid: bb233996dae83184597d364720df3381, type: 3}
       propertyPath: m_LocalPosition.x

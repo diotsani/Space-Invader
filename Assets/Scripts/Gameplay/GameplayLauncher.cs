@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Agate.MVC.Base;
 using Agate.MVC.Core;
+using System;
 
 public class GameplayLauncher : SceneLauncher<GameplayLauncher,GameplayView>
 {
@@ -12,14 +13,18 @@ public class GameplayLauncher : SceneLauncher<GameplayLauncher,GameplayView>
 
     protected override IConnector[] GetSceneConnectors()
     {
-        return null;
+        return new IConnector[]
+        {
+            new SpaceConnector(),
+        };
     }
 
     protected override IController[] GetSceneDependencies()
     {
         return new IController[]
         {
-            new SpaceController()
+            new SpaceController(),
+            new InputSystemController()
         };
     }
 

@@ -6,15 +6,19 @@ using Agate.MVC.Core;
 
 public class SpaceController : ObjectController<SpaceController, SpaceModel, ISpaceModel, SpaceView>
 {
-
-    float movSpeed = 4f;
-    public void MoveSpace()
+    public void MoveSpace(MoveSpaceMassage massage)
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
+        _model.SetMoveDirection(massage.direction);
+        Debug.Log(massage.direction);
 
-        Vector2 direction = new Vector2(horizontalInput, 0).normalized;
 
-        _view.transform.Translate(direction * movSpeed * Time.deltaTime);
+        //float horizontalInput = Input.GetAxis("Horizontal");
+        //direct = new Vector2(horizontalInput, 0).normalized;
+        
+
+        //Vector2 direction = new Vector2(horizontalInput, 0).normalized;
+
+        //_view.transform.Translate(direction * movSpeed * Time.deltaTime);
     }
 
     public void Shoot()

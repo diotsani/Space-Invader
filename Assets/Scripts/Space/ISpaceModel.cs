@@ -7,4 +7,8 @@ using Agate.MVC.Core;
 public interface ISpaceModel : IBaseModel
 {
     //public string Name { get; }
+
+    public Vector2 DirectMove { get; set; }
+
+    public float speed { get; set; }
 }
