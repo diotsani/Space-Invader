@@ -26,8 +26,6 @@ public class BulletPoolController : ObjectController<BulletPoolController,Bullet
 
     public void InitPoolBullet(StartPlayMessage message)
     {
-
-            
         if(_model.pooledBullets.Count < _model.maxBullet)
         {
             GameObject bullet = _view.CreateBulltObject();
@@ -36,13 +34,12 @@ public class BulletPoolController : ObjectController<BulletPoolController,Bullet
 
         for (int i = 0; i < _model.amountToPool; i++)
         {
-            Debug.Log(_model.amountToPool);
+            //Debug.Log(_model.amountToPool);
         }
     }
 
     private void SpawnBullet(GameObject bullet)
     {
-        //bullet.transform.Translate(Vector3.up * _model.ShootSpeed * Time.deltaTime);
         bullet.transform.position = space.Model.Position;
         _model.SpawnPoint();
         _model.AddBullet(bullet);
@@ -52,12 +49,12 @@ public class BulletPoolController : ObjectController<BulletPoolController,Bullet
     public void OnBulletMove(StartPlayMessage message)
     {
         _view.SetCallbacks(BulletMove);
-        Debug.Log("Callback Bullet Move");
+        //Debug.Log("Callback Bullet Move");
     }
 
     public void BulletMove()
     {
-        Vector3 position = Model.Position + (Vector3.up * _model.ShootSpeed * Time.deltaTime);
-        _model.SetPosition(position);
+        //Vector3 position = Model.Position + (Vector3.up * _model.ShootSpeed * Time.deltaTime);
+        //_model.SetPosition(position);
     }
 }

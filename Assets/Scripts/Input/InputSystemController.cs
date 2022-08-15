@@ -22,7 +22,7 @@ public class InputSystemController : BaseController<InputSystemController>
     {
         Publish<StartPlayMessage>(new StartPlayMessage());
 
-        Debug.Log(context);
+        //Debug.Log(context);
     }
 
     private void OnTap(InputAction.CallbackContext context)

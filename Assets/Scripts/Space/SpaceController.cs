@@ -9,7 +9,7 @@ public class SpaceController : ObjectController<SpaceController, SpaceModel, ISp
     public void MoveSpace(MoveSpaceMessage message)
     {
         _model.SetMoveDirection(message.direction);
-        Debug.Log(message.direction);
+        //Debug.Log(message.direction);
 
 
         //float horizontalInput = Input.GetAxis("Horizontal");

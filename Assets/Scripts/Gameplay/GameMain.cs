@@ -4,9 +4,6 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using Agate.MVC.Base;
 using Agate.MVC.Core;
-
-
-
     public class GameMain : BaseMain<GameMain>, IMain
     {
         protected override IConnector[] GetConnectors()
