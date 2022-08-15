@@ -6,30 +6,29 @@ using Agate.MVC.Core;
 
 public class BulletController : ObjectController<BulletController,BulletModel,IBulletModel,BulletView>
 {
-    public override IEnumerator Initialize()
+    SpaceController space;
+
+    public void Init(BulletModel model, BulletView view)
     {
-        return base.Initialize();
-    }
-    public override IEnumerator Finalize()
-    {
-        yield return base.Finalize();
+        _model = model;
+        SetView(view);
     }
 
-    public override void SetView(BulletView view)
-    {
-        base.SetView(view);
-        Debug.Log(view);
-    }
-
-    public void OnBulletMove(MoveBulletMessage message)
+    public void OnBulletMove(StartPlayMessage message)
     {
         _view.SetCallbacks(BulletMove);
         Debug.Log("Callback OnBulletMove");
     }
 
-    public void BulletMove()
+    private void BulletMove()
     {
         Vector3 position = _model.BulletPosition + (Vector3.up * _model.ShootSpeed * Time.deltaTime);
         _model.SetPosition(position);
+    }
+
+    public void BulletPosition()
+    {
+        Vector3 pos = _model.BulletPosition = space.Model.Position;
+        _model.SetPosition(pos);
     }
 }

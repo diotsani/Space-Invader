@@ -15,4 +15,9 @@ public class BulletModel : BaseModel,IBulletModel
         BulletPosition = position;
         SetDataAsDirty();
     }
+
+    public BulletModel()
+    {
+
+    }
 }

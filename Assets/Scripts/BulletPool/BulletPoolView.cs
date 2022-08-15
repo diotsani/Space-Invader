@@ -7,7 +7,7 @@ using UnityEngine.Events;
 
 public class BulletPoolView : ObjectView<IBulletPoolModel>
 {
-    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] public GameObject bulletPrefab;
 
     private UnityAction _onMoveBullet;
 

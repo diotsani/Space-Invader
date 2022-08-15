@@ -10,14 +10,14 @@ public class BulletPoolConnector : BaseConnector
     protected override void Connect()
     {
         Subscribe<StartPlayMessage>(_bulletPool.InitPoolBullet);
-        Subscribe<StartPlayMessage>(_bulletPool.OnBulletMove);
+        //Subscribe<StartPlayMessage>(_bulletPool.OnBulletMove);
         //Subscribe<MoveBulletMessage>(_bullet.OnBulletMove);
     }
 
     protected override void Disconnect()
     {
         Unsubscribe<StartPlayMessage>(_bulletPool.InitPoolBullet);
-        Unsubscribe<StartPlayMessage>(_bulletPool.OnBulletMove);
+        //Unsubscribe<StartPlayMessage>(_bulletPool.OnBulletMove);
         //Unsubscribe<MoveBulletMessage>(_bullet.OnBulletMove);
     }
 }

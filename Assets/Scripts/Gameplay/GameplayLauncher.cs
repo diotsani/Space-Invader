@@ -18,10 +18,11 @@ public class GameplayLauncher : SceneLauncher<GameplayLauncher,GameplayView>
         return new IConnector[]
         {
             new SpaceConnector(),
-            new BulletConnector(),
+            //new BulletConnector(),
             new BulletPoolConnector()
         };
     }
+
 
     protected override IController[] GetSceneDependencies()
     {
@@ -29,7 +30,7 @@ public class GameplayLauncher : SceneLauncher<GameplayLauncher,GameplayView>
         {
             new SpaceController(),
             new BulletPoolController(),
-            new BulletController(),
+            //new BulletController(),
             new InputSystemController()
         };
     }

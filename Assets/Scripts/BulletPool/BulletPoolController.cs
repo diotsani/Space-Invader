@@ -28,8 +28,23 @@ public class BulletPoolController : ObjectController<BulletPoolController,Bullet
     {
         if(_model.pooledBullets.Count < _model.maxBullet)
         {
-            GameObject bullet = _view.CreateBulltObject();
+            //GameObject bullet = _view.CreateBulltObject();
+            BulletModel instanceBullet = new BulletModel();
+            GameObject bullet = GameObject.Instantiate(_view.bulletPrefab, _view.transform);
             SpawnBullet(bullet);
+
+            BulletView instanceViewBullet = bullet.GetComponent<BulletView>();
+            BulletController instance = new BulletController();
+          
+            BulletConnector instanceConnector = new BulletConnector();
+            InjectDependencies(instance);
+            InjectDependencies(instanceConnector);
+            instance.Init(instanceBullet, instanceViewBullet);
+
+            Debug.Log(instance);
+
+            instance.BulletPosition();
+            instance.OnBulletMove(message);
         }
 
         for (int i = 0; i < _model.amountToPool; i++)
@@ -37,13 +52,14 @@ public class BulletPoolController : ObjectController<BulletPoolController,Bullet
             //Debug.Log(_model.amountToPool);
         }
     }
-
     private void SpawnBullet(GameObject bullet)
     {
         bullet.transform.position = space.Model.Position;
         _model.SpawnPoint();
         _model.AddBullet(bullet);
         bullet.SetActive(true);
+
+        Debug.Log("Spawned Bullet");
     }
 
     public void OnBulletMove(StartPlayMessage message)
