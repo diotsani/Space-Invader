@@ -54,6 +54,7 @@ public class BulletPoolController : ObjectController<BulletPoolController,Bullet
 
     public void BulletMove()
     {
+        //Debug.Log("Callback Bullet Move");
         //Vector3 position = Model.Position + (Vector3.up * _model.ShootSpeed * Time.deltaTime);
         //_model.SetPosition(position);
     }

@@ -8,7 +8,6 @@ using UnityEngine;
 public class BulletView : ObjectView<IBulletModel>
 {
     private UnityAction _onMoveBullet;
-
     protected override void InitRenderModel(IBulletModel model)
     {
         transform.position = model.BulletPosition;
@@ -30,11 +29,12 @@ public class BulletView : ObjectView<IBulletModel>
     {
         //Debug.Log(transform.position);
         //Debug.Log("update bullet view");
+        _onMoveBullet?.Invoke();
     }
 
     private void FixedUpdate()
     {
-        Debug.Log(_onMoveBullet);
-        _onMoveBullet?.Invoke();
+        //Debug.Log(_onMoveBullet);
+        //_onMoveBullet?.Invoke();
     }
 }

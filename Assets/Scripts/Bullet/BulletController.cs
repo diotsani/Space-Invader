@@ -6,6 +6,10 @@ using Agate.MVC.Core;
 
 public class BulletController : ObjectController<BulletController,BulletModel,IBulletModel,BulletView>
 {
+    public override IEnumerator Initialize()
+    {
+        return base.Initialize();
+    }
     public override IEnumerator Finalize()
     {
         yield return base.Finalize();
@@ -17,7 +21,7 @@ public class BulletController : ObjectController<BulletController,BulletModel,IB
         Debug.Log(view);
     }
 
-    public void OnBulletMove(StartPlayMessage message)
+    public void OnBulletMove(MoveBulletMessage message)
     {
         _view.SetCallbacks(BulletMove);
         Debug.Log("Callback OnBulletMove");
