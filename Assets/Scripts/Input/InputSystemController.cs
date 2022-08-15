@@ -15,12 +15,20 @@ public class InputSystemController : BaseController<InputSystemController>
         yield return base.Initialize();
         _inputSystemManager.Space.Enable();
         _inputSystemManager.Space.Tap.performed += OnTap;
+        _inputSystemManager.Space.Shoot.performed += OnShoot;
+    }
+
+    private void OnShoot(InputAction.CallbackContext context)
+    {
+        Publish<StartPlayMessage>(new StartPlayMessage());
+
+        Debug.Log(context);
     }
 
     private void OnTap(InputAction.CallbackContext context)
     {
-        //Publish<MoveSpaceMassage>(new MoveSpaceMassage());
+        //Publish<MoveSpaceMassage>(new MoveSpaceMessage());
 
-        Publish(new MoveSpaceMassage(context.ReadValue<Vector2>()));
+        Publish(new MoveSpaceMessage(context.ReadValue<Vector2>()));
     }
 }

@@ -9,11 +9,11 @@ public class SpaceConnector : BaseConnector
     private SpaceController _space;
     protected override void Connect()
     {
-        Subscribe<MoveSpaceMassage>(_space.MoveSpace);
+        Subscribe<MoveSpaceMessage>(_space.MoveSpace);
     }
 
     protected override void Disconnect()
     {
-        Unsubscribe<MoveSpaceMassage>(_space.MoveSpace);
+        Unsubscribe<MoveSpaceMessage>(_space.MoveSpace);
     }
 }

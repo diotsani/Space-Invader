@@ -35,6 +35,15 @@ public partial class @InputSystemManager : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Shoot"",
+                    ""type"": ""Value"",
+                    ""id"": ""a521edcd-fcba-42de-a85d-7672e6d24b74"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -92,6 +101,28 @@ public partial class @InputSystemManager : IInputActionCollection2, IDisposable
                     ""action"": ""Tap"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4bf69d56-c070-470a-aa21-1dc610e40962"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e7ff0683-b111-4278-a98b-6adf011423c7"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -113,6 +144,7 @@ public partial class @InputSystemManager : IInputActionCollection2, IDisposable
         // Space
         m_Space = asset.FindActionMap("Space", throwIfNotFound: true);
         m_Space_Tap = m_Space.FindAction("Tap", throwIfNotFound: true);
+        m_Space_Shoot = m_Space.FindAction("Shoot", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -173,11 +205,13 @@ public partial class @InputSystemManager : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Space;
     private ISpaceActions m_SpaceActionsCallbackInterface;
     private readonly InputAction m_Space_Tap;
+    private readonly InputAction m_Space_Shoot;
     public struct SpaceActions
     {
         private @InputSystemManager m_Wrapper;
         public SpaceActions(@InputSystemManager wrapper) { m_Wrapper = wrapper; }
         public InputAction @Tap => m_Wrapper.m_Space_Tap;
+        public InputAction @Shoot => m_Wrapper.m_Space_Shoot;
         public InputActionMap Get() { return m_Wrapper.m_Space; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -190,6 +224,9 @@ public partial class @InputSystemManager : IInputActionCollection2, IDisposable
                 @Tap.started -= m_Wrapper.m_SpaceActionsCallbackInterface.OnTap;
                 @Tap.performed -= m_Wrapper.m_SpaceActionsCallbackInterface.OnTap;
                 @Tap.canceled -= m_Wrapper.m_SpaceActionsCallbackInterface.OnTap;
+                @Shoot.started -= m_Wrapper.m_SpaceActionsCallbackInterface.OnShoot;
+                @Shoot.performed -= m_Wrapper.m_SpaceActionsCallbackInterface.OnShoot;
+                @Shoot.canceled -= m_Wrapper.m_SpaceActionsCallbackInterface.OnShoot;
             }
             m_Wrapper.m_SpaceActionsCallbackInterface = instance;
             if (instance != null)
@@ -197,6 +234,9 @@ public partial class @InputSystemManager : IInputActionCollection2, IDisposable
                 @Tap.started += instance.OnTap;
                 @Tap.performed += instance.OnTap;
                 @Tap.canceled += instance.OnTap;
+                @Shoot.started += instance.OnShoot;
+                @Shoot.performed += instance.OnShoot;
+                @Shoot.canceled += instance.OnShoot;
             }
         }
     }
@@ -213,5 +253,6 @@ public partial class @InputSystemManager : IInputActionCollection2, IDisposable
     public interface ISpaceActions
     {
         void OnTap(InputAction.CallbackContext context);
+        void OnShoot(InputAction.CallbackContext context);
     }
 }

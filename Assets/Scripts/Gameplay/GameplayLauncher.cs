@@ -10,12 +10,14 @@ public class GameplayLauncher : SceneLauncher<GameplayLauncher,GameplayView>
     public override string SceneName => "Gameplay";
 
     private SpaceController _space;
+    private BulletPoolController _bulletPool;
 
     protected override IConnector[] GetSceneConnectors()
     {
         return new IConnector[]
         {
             new SpaceConnector(),
+            new BulletPoolConnector()
         };
     }
 
@@ -24,6 +26,7 @@ public class GameplayLauncher : SceneLauncher<GameplayLauncher,GameplayView>
         return new IController[]
         {
             new SpaceController(),
+            new BulletPoolController(),
             new InputSystemController()
         };
     }
@@ -31,6 +34,7 @@ public class GameplayLauncher : SceneLauncher<GameplayLauncher,GameplayView>
     protected override IEnumerator InitSceneObject()
     {
         _space.SetView(_view.SpaceView);
+        _bulletPool.SetView(_view.BulletView);
         yield return null;
     }
 

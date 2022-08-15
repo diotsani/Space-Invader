@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class BulletPool : MonoBehaviour
 {
-   public static BulletPool instance;
-
     private List<GameObject> pooledObjects = new List<GameObject>();
     private int amountToPool = 15;
 
@@ -18,14 +16,6 @@ public class BulletPool : MonoBehaviour
             GameObject bullet = Instantiate(bulletPrefab);
             bullet.SetActive(false);
             pooledObjects.Add(bullet); 
-        }
-    }
-
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
         }
     }
 
