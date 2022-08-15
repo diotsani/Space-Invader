@@ -7,4 +7,5 @@ using Agate.MVC.Core;
 public class GameplayView : BaseSceneView
 {
     [SerializeField] public SpaceView SpaceView;
+    [SerializeField] public BulletPoolView BulletView;
 }

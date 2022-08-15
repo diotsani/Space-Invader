@@ -6,10 +6,10 @@ using Agate.MVC.Core;
 
 public class SpaceController : ObjectController<SpaceController, SpaceModel, ISpaceModel, SpaceView>
 {
-    public void MoveSpace(MoveSpaceMassage massage)
+    public void MoveSpace(MoveSpaceMessage message)
     {
-        _model.SetMoveDirection(massage.direction);
-        Debug.Log(massage.direction);
+        _model.SetMoveDirection(message.direction);
+        Debug.Log(message.direction);
 
 
         //float horizontalInput = Input.GetAxis("Horizontal");
@@ -32,6 +32,11 @@ public class SpaceController : ObjectController<SpaceController, SpaceModel, ISp
         //    bullet.transform.position = firepoint.position;
         //    bullet.SetActive(true);
         //}
+    }
+
+    private void OnMoveSpace(GameObject obj)
+    {
+        //Vector2 transformPos = transform.Translate(_model.DirectMove * _model.speed * Time.deltaTime);
     }
 
 }

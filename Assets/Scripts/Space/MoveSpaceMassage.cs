@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public struct MoveSpaceMassage
+public struct MoveSpaceMessage
 {
     public Vector2 direction { get; set; }
 
-    public MoveSpaceMassage(Vector2 dir)
+    public MoveSpaceMessage(Vector2 dir)
     {
         direction = dir;
     }

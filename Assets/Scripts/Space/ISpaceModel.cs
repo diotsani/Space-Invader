@@ -11,4 +11,6 @@ public interface ISpaceModel : IBaseModel
     public Vector2 DirectMove { get; set; }
 
     public float speed { get; set; }
+
+    public Vector3 Position { get; set; }
 }
