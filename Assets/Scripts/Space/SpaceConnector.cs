@@ -10,10 +10,12 @@ public class SpaceConnector : BaseConnector
     protected override void Connect()
     {
         Subscribe<MoveSpaceMessage>(_space.MoveSpace);
+        Subscribe<MoveSpaceMessage>(_space.OnMoveSpace);
     }
 
     protected override void Disconnect()
     {
+        Unsubscribe<MoveSpaceMessage>(_space.OnMoveSpace);
         Unsubscribe<MoveSpaceMessage>(_space.MoveSpace);
     }
 }

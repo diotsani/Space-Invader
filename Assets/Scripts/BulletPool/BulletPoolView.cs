@@ -29,6 +29,7 @@ public class BulletPoolView : ObjectView<IBulletPoolModel>
     public GameObject CreateBulltObject()
     {
         GameObject bullet = Instantiate(bulletPrefab, transform);
+        //bullet.SetActive(false);
         return bullet;
     }
 

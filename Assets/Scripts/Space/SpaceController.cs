@@ -34,9 +34,16 @@ public class SpaceController : ObjectController<SpaceController, SpaceModel, ISp
         //}
     }
 
-    private void OnMoveSpace(GameObject obj)
+    public void OnMoveSpace(MoveSpaceMessage message)
     {
-        //Vector2 transformPos = transform.Translate(_model.DirectMove * _model.speed * Time.deltaTime);
+        _view.SetCallbacks(MovingSpace);
+    }
+
+    public void MovingSpace()
+    {
+        _view.transform.Translate(_model.DirectMove * _model.speed * Time.deltaTime);
+        _model.Position = _view.transform.position;
+        //Debug.Log("On Move Space");
     }
 
 }
