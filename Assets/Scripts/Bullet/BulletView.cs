@@ -8,6 +8,8 @@ using UnityEngine;
 public class BulletView : ObjectView<IBulletModel>
 {
     private UnityAction _onMoveBullet;
+    private UnityAction _onHitEnemy;
+
     protected override void InitRenderModel(IBulletModel model)
     {
         transform.position = model.BulletPosition;
@@ -18,23 +20,27 @@ public class BulletView : ObjectView<IBulletModel>
         transform.position = model.BulletPosition;
     }
 
-    public void SetCallbacks(UnityAction onMoveBullet)
+    public void SetCallbacks(UnityAction onMoveBullet, UnityAction onHitEnemy)
     {
         _onMoveBullet = onMoveBullet;
+        _onHitEnemy = onHitEnemy;
 
         Debug.Log("_onmove");
     }
 
     public void Update()
     {
-        //Debug.Log(transform.position);
-        //Debug.Log("update bullet view");
-        _onMoveBullet?.Invoke();
+        _onMoveBullet?.Invoke(); // Fungsi Move Bullet
     }
 
-    private void FixedUpdate()
+    public void OnCollisionEnter2D(Collision2D collision)
     {
-        //Debug.Log(_onMoveBullet);
-        //_onMoveBullet?.Invoke();
+        bool isHitEnemy = collision.gameObject.CompareTag("Enemy");
+
+        if(isHitEnemy)
+        {
+            _onHitEnemy?.Invoke();
+            //Debug.Log("Hit Enemy");
+        }
     }
 }

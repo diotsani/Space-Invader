@@ -21,19 +21,6 @@ public class SpaceController : ObjectController<SpaceController, SpaceModel, ISp
         //_view.transform.Translate(direction * movSpeed * Time.deltaTime);
     }
 
-    public void Shoot()
-    {
-        //GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-
-        //GameObject bullet = ObjectPool.instance.GetPooledObject();
-
-        //if (bullet != null)
-        //{
-        //    bullet.transform.position = firepoint.position;
-        //    bullet.SetActive(true);
-        //}
-    }
-
     public void OnMoveSpace(MoveSpaceMessage message)
     {
         _view.SetCallbacks(MovingSpace);

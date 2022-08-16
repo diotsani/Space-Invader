@@ -10,12 +10,12 @@ public class BulletConnector : BaseConnector
 
     protected override void Connect()
     { Debug.Log(_bullet);
-        Subscribe<StartPlayMessage>(_bullet.OnBulletMove);
+        //Subscribe<StartPlayMessage>(_bullet.OnBulletMove);
        
     }
 
     protected override void Disconnect()
     {
-        Unsubscribe<StartPlayMessage>(_bullet.OnBulletMove);
+        //Unsubscribe<StartPlayMessage>(_bullet.OnBulletMove);
     }
 }

@@ -6,9 +6,17 @@ using Agate.MVC.Core;
 
 public class BulletModel : BaseModel,IBulletModel
 {
-    public float ShootSpeed { get; set; } = 3f;
+    public float ShootSpeed { get; set; } //= 3f;
 
     public Vector3 BulletPosition { get; set; } = new Vector3();
+
+    public int Health { get; set; }
+
+    public BulletModel()
+    {
+        ShootSpeed = 3f;
+        Health = 1;
+    }
 
     public void SetPosition(Vector3 position)
     {
@@ -16,8 +24,9 @@ public class BulletModel : BaseModel,IBulletModel
         SetDataAsDirty();
     }
 
-    public BulletModel()
+    public void SetHealth(int health)
     {
-
+        Health = health;
+        SetDataAsDirty();
     }
 }

@@ -6,4 +6,5 @@ public interface IBulletModel : IBaseModel
 {
     public Vector3 BulletPosition { get; }
     public float ShootSpeed { get; }
+    public int Health { get; }
 }
