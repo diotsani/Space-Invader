@@ -11,15 +11,16 @@ public class GameplayLauncher : SceneLauncher<GameplayLauncher,GameplayView>
 
     private SpaceController _space;
     private BulletPoolController _bulletPool;
-    private BulletController _bullet;
+    private PowerUpPoolController _powerUpPool;
 
     protected override IConnector[] GetSceneConnectors()
     {
         return new IConnector[]
         {
             new SpaceConnector(),
-            //new BulletConnector(),
-            new BulletPoolConnector()
+            new BulletPoolConnector(),
+            new PowerUpPoolConnector(),
+            new PowerUpPoolConnector()
         };
     }
 
@@ -30,7 +31,7 @@ public class GameplayLauncher : SceneLauncher<GameplayLauncher,GameplayView>
         {
             new SpaceController(),
             new BulletPoolController(),
-            //new BulletController(),
+            new PowerUpPoolController(),
             new InputSystemController()
         };
     }
@@ -39,7 +40,7 @@ public class GameplayLauncher : SceneLauncher<GameplayLauncher,GameplayView>
     {
         _space.SetView(_view.SpaceView);
         _bulletPool.SetView(_view.BulletPoolView);
-        //_bullet.SetView(_view.BulletView);
+        _powerUpPool.SetView(_view.PowerUpPoolView);
         yield return null;
     }
 

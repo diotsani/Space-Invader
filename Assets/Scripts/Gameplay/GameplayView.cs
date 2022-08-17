@@ -8,5 +8,5 @@ public class GameplayView : BaseSceneView
 {
     [SerializeField] public SpaceView SpaceView;
     [SerializeField] public BulletPoolView BulletPoolView;
-    [SerializeField] public BulletView BulletView;
+    [SerializeField] public PowerUpPoolView PowerUpPoolView;
 }

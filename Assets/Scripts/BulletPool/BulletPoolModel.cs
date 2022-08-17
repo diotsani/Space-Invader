@@ -52,15 +52,4 @@ public class BulletPoolModel : BaseModel,IBulletPoolModel
         bulletCtrs.Remove(bulletC);
         SetDataAsDirty();
     }
-
-
-    public GameObject GetBullet()
-    {
-        for (int i = 0; i < pooledBullets.Count; i++)
-        {
-                return pooledBullets[i];
-        }
-        return null;
-
-    }
 }
