@@ -12,6 +12,8 @@ public interface IBulletPoolModel : IBaseModel
 
     public int maxBullet { get; }
 
+    public bool IsPowerUp { get; }
+
     public List<GameObject> pooledBullets { get;}
     public List<BulletController> bulletCtrs { get;}
 }

@@ -10,6 +10,8 @@ public class BulletPoolConnector : BaseConnector
     protected override void Connect()
     {
         Subscribe<StartPlayMessage>(_bulletPool.InitPoolBullet);
+        Subscribe<OnPowerUpMessage>(_bulletPool.SetIsPowerUp);
+        Subscribe<OffPowerUpMessage>(_bulletPool.SetEndPowerUp);
         //Subscribe<StartPlayMessage>(_bulletPool.OnBulletMove);
         //Subscribe<MoveBulletMessage>(_bullet.OnBulletMove);
     }
@@ -17,6 +19,8 @@ public class BulletPoolConnector : BaseConnector
     protected override void Disconnect()
     {
         Unsubscribe<StartPlayMessage>(_bulletPool.InitPoolBullet);
+        Unsubscribe<OnPowerUpMessage>(_bulletPool.SetIsPowerUp);
+        Unsubscribe<OffPowerUpMessage>(_bulletPool.SetEndPowerUp);
         //Unsubscribe<StartPlayMessage>(_bulletPool.OnBulletMove);
         //Unsubscribe<MoveBulletMessage>(_bullet.OnBulletMove);
     }

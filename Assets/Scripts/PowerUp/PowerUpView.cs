@@ -9,6 +9,7 @@ public class PowerUpView : ObjectView<IPowerUpModel>
 {
     private UnityAction _onMovePU;
     private UnityAction _onHitPlayer;
+    private UnityAction _onPowerUp;
 
     protected override void InitRenderModel(IPowerUpModel model)
     {
@@ -20,14 +21,16 @@ public class PowerUpView : ObjectView<IPowerUpModel>
         transform.position = model.PowerUpPosition;
     }
 
-    public void SetCallbacks(UnityAction onMovePU, UnityAction onHitPlayer)
+    public void SetCallbacks(UnityAction onMovePU, UnityAction onHitPlayer, UnityAction onPowerUp)
     {
         _onMovePU = onMovePU;
         _onHitPlayer = onHitPlayer;
+        _onPowerUp = onPowerUp;
     }
     private void Update()
     {
         _onMovePU?.Invoke();
+        _onPowerUp?.Invoke();
     }
 
     public void OnCollisionEnter2D(Collision2D collision)

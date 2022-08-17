@@ -57,7 +57,7 @@ public class PowerUpPoolController : ObjectController<PowerUpPoolController,Powe
         if(_model.timer >= spawnInterval)
         {
             SpawnPowerUpPool();
-            Debug.Log("Spawn Power 5");
+            //Debug.Log("Spawn Power 5");
             _model.timer -= spawnInterval;
         }
     }

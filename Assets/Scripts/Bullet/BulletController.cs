@@ -18,7 +18,7 @@ public class BulletController : ObjectController<BulletController,BulletModel,IB
     public void OnBulletMove()
     {
         _view.SetCallbacks(BulletMove,HitEnemy);
-        Debug.Log("Callback OnBulletMove");
+        //Debug.Log("Callback OnBulletMove");
     }
 
     public void HitEnemy() // Hit Enemy terpanggil ketika bertabrakan dengan enemy, dipanggil menggunakan fungsi callbacks
@@ -28,12 +28,12 @@ public class BulletController : ObjectController<BulletController,BulletModel,IB
         {
             _view.gameObject.SetActive(false);
         }
-        Debug.Log("Hitting Enemy");
+        //Debug.Log("Hitting Enemy");
     }
 
     public void OnSpawn()
     {
-        Debug.Log("OnSpawn");
+        //Debug.Log("OnSpawn");
         _view.gameObject.SetActive(true);
     }
 
@@ -58,6 +58,16 @@ public class BulletController : ObjectController<BulletController,BulletModel,IB
 
     public void OnHitPowerUp()
     {
-        _view.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+        if(bulletPool.Model.IsPowerUp==true)
+        {
+            _view.gameObject.GetComponent<SpriteRenderer>().color = Color.green;
+            _model.Health = 2;
+        }
+
+        if (bulletPool.Model.IsPowerUp == false)
+        {
+            _view.gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
+            _model.Health = 1;
+        }
     }
 }

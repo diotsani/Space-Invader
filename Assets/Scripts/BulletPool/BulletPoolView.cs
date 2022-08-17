@@ -10,6 +10,7 @@ public class BulletPoolView : ObjectView<IBulletPoolModel>
     [SerializeField] public GameObject bulletPrefab;
 
     private UnityAction _onMoveBullet;
+    private UnityAction _onPowerUp;
 
     public void SetCallbacks(UnityAction onMoveBullet)
     {
@@ -36,5 +37,6 @@ public class BulletPoolView : ObjectView<IBulletPoolModel>
     private void Update()
     {
         _onMoveBullet?.Invoke();
+        _onPowerUp?.Invoke();
     }
 }

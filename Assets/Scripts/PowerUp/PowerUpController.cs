@@ -7,7 +7,9 @@ using System;
 
 public class PowerUpController : ObjectController<PowerUpController, PowerUpModel, IPowerUpModel, PowerUpView>
 {
-    BulletController _bullet;
+    BulletPoolController _bulletPool;
+    float timer;
+
     public void Init(PowerUpModel model, PowerUpView view) //Instance multiple onject
     {
         _model = model;
@@ -15,7 +17,7 @@ public class PowerUpController : ObjectController<PowerUpController, PowerUpMode
     }
     public void OnMovePowerUp()
     {
-        _view.SetCallbacks(MovePowerUp,HitPlayer);
+        _view.SetCallbacks(MovePowerUp,HitPlayer,EndPowerUp);
     }
 
     public void PowerUpPosition() // random position on spawn / pooling
@@ -47,7 +49,23 @@ public class PowerUpController : ObjectController<PowerUpController, PowerUpMode
 
     public void HitPlayer()
     {
+        Publish<OnPowerUpMessage>(new OnPowerUpMessage());
         _view.gameObject.SetActive(false);
-        //_bullet.Model.Sprite.color = Color.red;
+    }
+
+    public void EndPowerUp()
+    {
+        float powerUpDuration = 5f;
+
+        if(_bulletPool.Model.IsPowerUp == true)
+        {
+            timer += Time.deltaTime;
+            if (timer >= powerUpDuration)
+            {
+                Publish<OffPowerUpMessage>(new OffPowerUpMessage());
+                Debug.Log("Power Up End");
+                timer -= powerUpDuration;
+            }
+        }
     }
 }

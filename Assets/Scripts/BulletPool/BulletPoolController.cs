@@ -46,7 +46,7 @@ public class BulletPoolController : ObjectController<BulletPoolController,Bullet
 
                 instance.Init(instanceBullet, instanceViewBullet);
 
-                Debug.Log(instance);
+                //Debug.Log(instance);
 
                 instance.BulletPosition();
                 instance.OnBulletMove();
@@ -70,7 +70,7 @@ public class BulletPoolController : ObjectController<BulletPoolController,Bullet
             //bulletPool.transform.position = space.Model.Position;
             //_model.bulletCtrs[0].BulletPosition();
             bulletPool.SetActive(true);
-            Debug.Log("SpawnBulletPool");
+            //Debug.Log("SpawnBulletPool");
         }
     }
 
@@ -82,7 +82,8 @@ public class BulletPoolController : ObjectController<BulletPoolController,Bullet
             if (!_model.pooledBullets[i].activeInHierarchy)
             {
                 _model.bulletCtrs[i].BulletPosition();
-                Debug.Log("PoolBullet");
+                _model.bulletCtrs[i].OnHitPowerUp();
+                //Debug.Log("PoolBullet");
                 return _model.pooledBullets[i];
             }
         }
@@ -113,5 +114,15 @@ public class BulletPoolController : ObjectController<BulletPoolController,Bullet
         Debug.Log("Callback Bullet Move"); // Fungsi yang manggil harus dihapus
         //Vector3 position = Model.Position + (Vector3.up * _model.ShootSpeed * Time.deltaTime);
         //_model.SetPosition(position);
+    }
+
+    public void SetIsPowerUp(OnPowerUpMessage message)
+    {
+        _model.IsPowerUp = true;
+    }
+
+    public void SetEndPowerUp(OffPowerUpMessage messege)
+    {
+        _model.IsPowerUp = false;
     }
 }

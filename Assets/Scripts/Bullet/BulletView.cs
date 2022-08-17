@@ -25,7 +25,7 @@ public class BulletView : ObjectView<IBulletModel>
         _onMoveBullet = onMoveBullet;
         _onHitEnemy = onHitEnemy;
 
-        Debug.Log("_onmove");
+        //Debug.Log("_onmove");
     }
 
     public void Update()
@@ -39,6 +39,7 @@ public class BulletView : ObjectView<IBulletModel>
 
         if(isHitEnemy)
         {
+            collision.gameObject.SetActive(false);
             _onHitEnemy?.Invoke();
         }
     }

@@ -15,8 +15,13 @@ public class BulletPoolModel : BaseModel,IBulletPoolModel
     public List<GameObject> pooledBullets { get; set; } = new List<GameObject>();
     public List<BulletController> bulletCtrs { get; set; } = new List<BulletController>();
     public Vector3 SpawnPos { get; set; } = new Vector3();
+    public bool IsPowerUp { get; set; } = false;
 
-
+    public void SetIsPowerUp(bool isPowerUp)
+    {
+        IsPowerUp = isPowerUp;
+        SetDataAsDirty();
+    }
     public void SpawnPoint()
     {
         //SpawnPos += space.Position;
