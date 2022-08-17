@@ -18,14 +18,4 @@ public class BulletPool : MonoBehaviour
             pooledObjects.Add(bullet); 
         }
     }
-
-    public GameObject GetPooledBullet()
-    {
-        for (int i = 0; i < pooledObjects.Count; i++)
-        {
-            return pooledObjects[i];
-        }
-
-        return null;
-    }
 }

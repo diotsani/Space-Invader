@@ -6,7 +6,7 @@ using Agate.MVC.Core;
 
 public class PowerUpPoolController : ObjectController<PowerUpPoolController,PowerUpPoolModel,IPowerUpPoolModel,PowerUpPoolView>
 {
-    float timer;
+    //float timer;
     public override IEnumerator Finalize()
     {
         yield return base.Finalize();
@@ -15,6 +15,8 @@ public class PowerUpPoolController : ObjectController<PowerUpPoolController,Powe
     {
         base.SetView(view);
         InstantiatePU();
+        OnInitPoolPU();
+        //InstantiatePU();
     }
 
     public void InstantiatePU()
@@ -43,21 +45,20 @@ public class PowerUpPoolController : ObjectController<PowerUpPoolController,Powe
         }
     }
 
-    public void OnInitPoolPU(StartPlayMessage message)
+    public void OnInitPoolPU()
     {
         _view.SetCallbacks(InitPoolPU);
     }
     public void InitPoolPU()
     {
-        
         float spawnInterval = 5;
-        timer += Time.deltaTime;
+        _model.timer += Time.deltaTime;
 
-        if(timer >= spawnInterval)
+        if(_model.timer >= spawnInterval)
         {
             SpawnPowerUpPool();
             Debug.Log("Spawn Power 5");
-            timer -= spawnInterval;
+            _model.timer -= spawnInterval;
         }
     }
 
@@ -67,7 +68,6 @@ public class PowerUpPoolController : ObjectController<PowerUpPoolController,Powe
         if (powerUpPool != null)
         {
             powerUpPool.SetActive(true);
-            Debug.Log("SpawnPowerUpPool");
         }
     }
 
@@ -79,7 +79,6 @@ public class PowerUpPoolController : ObjectController<PowerUpPoolController,Powe
             if (!_model.pooledPowerUps[i].activeInHierarchy)
             {
                 _model.powerUpControllers[i].PowerUpPosition();
-                Debug.Log("PoolPU");
                 return _model.pooledPowerUps[i];
             }
         }

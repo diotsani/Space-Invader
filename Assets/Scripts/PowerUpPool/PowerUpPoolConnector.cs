@@ -9,11 +9,11 @@ public class PowerUpPoolConnector : BaseConnector
     private PowerUpPoolController _powerUpPool;
     protected override void Connect()
     {
-        Subscribe<StartPlayMessage>(_powerUpPool.OnInitPoolPU);
+        //Subscribe<StartPlayMessage>(_powerUpPool.OnInitPoolPU);
     }
 
     protected override void Disconnect()
     {
-        Unsubscribe<StartPlayMessage>(_powerUpPool.OnInitPoolPU);
+        //Unsubscribe<StartPlayMessage>(_powerUpPool.OnInitPoolPU);
     }
 }

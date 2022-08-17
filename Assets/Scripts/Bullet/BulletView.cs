@@ -40,7 +40,6 @@ public class BulletView : ObjectView<IBulletModel>
         if(isHitEnemy)
         {
             _onHitEnemy?.Invoke();
-            //Debug.Log("Hit Enemy");
         }
     }
 }

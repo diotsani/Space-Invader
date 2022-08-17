@@ -11,6 +11,8 @@ public class PowerUpPoolModel : BaseModel,IPowerUpPoolModel
 
     public float SpeedPU { get; set; } = 2f;
 
+    public float timer { get; set; }
+
     public int maxPowerUp { get; set; } = 5;
 
     public List<GameObject> pooledPowerUps { get; set; } = new List<GameObject>();

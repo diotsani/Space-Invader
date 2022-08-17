@@ -55,4 +55,9 @@ public class BulletController : ObjectController<BulletController,BulletModel,IB
         Vector3 pos = _model.BulletPosition = space.Model.Position;
         _model.SetPosition(pos);
     }
+
+    public void OnHitPowerUp()
+    {
+        _view.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+    }
 }
