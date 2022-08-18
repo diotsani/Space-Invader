@@ -12,18 +12,4 @@ public class EnemyController : ObjectController<EnemyController,EnemyModel,IEnem
         _model = model;
         SetView(view);
     }
-    public void OnHitBullet()
-    {
-        _view.SetCallbacks(OnDespawnEnemy);
-    }
-    public void OnDespawnEnemy()
-    {
-        //DespawnEnemy();
-    }
-
-    private void DespawnEnemy(GameObject enemy)
-    {
-        enemyPool.RemoveEnemyList(enemy);
-        enemy.SetActive(false);
-    }
 }

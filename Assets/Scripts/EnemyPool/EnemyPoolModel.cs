@@ -4,7 +4,7 @@ using UnityEngine;
 using Agate.MVC.Base;
 using Agate.MVC.Core;
 
-public class EnemyPoolModel : BaseModel
+public class EnemyPoolModel : BaseModel,IEnemyPoolModel
 {
     public int Rows { get; set; } = 3;
     public int Columns { get; set; } = 5;
@@ -12,9 +12,17 @@ public class EnemyPoolModel : BaseModel
     public int EnemyKilled { get; set; }
     public float Timer { get; set; }
     public float DurationSpawn { get; set; } = 2;
-
     public List<GameObject> PooledEnemys { get; set; } = new List<GameObject>();
     public List<EnemyController> EnemyControllers { get; set; } = new List<EnemyController>();
+    public float EnemySpeed { get; set; } = 1f;//= 3f;
+
+    public Vector3 EnemyPosition { get; set; } = new Vector3();
+
+    public void SetPosition(Vector3 position)
+    {
+        EnemyPosition = position;
+        SetDataAsDirty();
+    }
     public void AddEnemys(GameObject enemy)
     {
         PooledEnemys.Add(enemy);
