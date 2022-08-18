@@ -32,9 +32,9 @@ public class BulletPoolController : ObjectController<BulletPoolController,Bullet
                 BulletView instanceViewBullet = bullet.GetComponent<BulletView>();
                 BulletController instance = new BulletController();
 
-                BulletConnector instanceConnector = new BulletConnector();
+                //BulletConnector instanceConnector = new BulletConnector();
                 InjectDependencies(instance);
-                InjectDependencies(instanceConnector);
+                //InjectDependencies(instanceConnector);
 
                 AddBulletController(instance);
 

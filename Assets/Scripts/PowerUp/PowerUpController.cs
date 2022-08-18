@@ -1,15 +1,10 @@
-using System.Collections;
+using Agate.MVC.Base;
 using UnityEngine;
 using Random = UnityEngine.Random;
-using Agate.MVC.Base;
-using Agate.MVC.Core;
-using System;
 
 public class PowerUpController : ObjectController<PowerUpController, PowerUpModel, IPowerUpModel, PowerUpView>
 {
     BulletPoolController _bulletPool;
-    float timer;
-
     public void Init(PowerUpModel model, PowerUpView view) //Instance multiple onject
     {
         _model = model;
@@ -17,7 +12,7 @@ public class PowerUpController : ObjectController<PowerUpController, PowerUpMode
     }
     public void OnMovePowerUp()
     {
-        _view.SetCallbacks(MovePowerUp,HitPlayer,EndPowerUp);
+        _view.SetCallbacks(MovePowerUp, HitPlayer, EndPowerUp);
     }
 
     public void PowerUpPosition() // random position on spawn / pooling
@@ -40,7 +35,7 @@ public class PowerUpController : ObjectController<PowerUpController, PowerUpMode
         Vector3 pos = _model.PowerUpPosition + (Vector3.down * _model.SpeedPU * Time.deltaTime);
         _model.SetPUPosition(pos);
 
-        if(_model.PowerUpPosition.y <= -5.5f)
+        if (_model.PowerUpPosition.y <= -5.5f)
         {
             PowerUpPosition();
             _view.gameObject.SetActive(false);
@@ -50,21 +45,25 @@ public class PowerUpController : ObjectController<PowerUpController, PowerUpMode
     public void HitPlayer()
     {
         Publish<OnPowerUpMessage>(new OnPowerUpMessage());
+        // +5 durasi _model.float durasi
+        _model.DurationPU += 5;
+        //Debug.Log(_model.DurationPU);
         _view.gameObject.SetActive(false);
     }
 
     public void EndPowerUp()
     {
-        float powerUpDuration = 5f;
+        // + Durasi eror karena setiap powerup ter update, need fix
 
-        if(_bulletPool.Model.IsPowerUp == true)
+        if (_model.DurationPU > 0) //_bulletPool.Model.IsPowerUp == true)
         {
-            timer += Time.deltaTime;
-            if (timer >= powerUpDuration)
+            _model.Timer += Time.deltaTime;
+            //Debug.Log(_model.Timer);
+            if (_model.Timer >= _model.DurationPU)
             {
+                _model.Timer = 0;//_model.DurationPU;
+                _model.DurationPU = 0;
                 Publish<OffPowerUpMessage>(new OffPowerUpMessage());
-                Debug.Log("Power Up End");
-                timer -= powerUpDuration;
             }
         }
     }

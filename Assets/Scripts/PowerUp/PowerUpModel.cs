@@ -7,6 +7,8 @@ using Agate.MVC.Core;
 public class PowerUpModel : BaseModel,IPowerUpModel
 {
     public float SpeedPU { get; set; } //= 3f;
+    public float DurationPU { get; set; } = 5;
+    public float Timer { get; set; }
 
     public Vector3 PowerUpPosition { get; set; } = new Vector3();
 
@@ -15,7 +17,7 @@ public class PowerUpModel : BaseModel,IPowerUpModel
 
     public PowerUpModel()
     {
-        SpeedPU = 1f;
+        SpeedPU = 3f;
     }
 
     public void SetPUPosition(Vector3 position)

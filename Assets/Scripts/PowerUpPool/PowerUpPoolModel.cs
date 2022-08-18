@@ -30,7 +30,7 @@ public class PowerUpPoolModel : BaseModel,IPowerUpPoolModel
         SetDataAsDirty();
     }
 
-    public void RemovePowerUp(GameObject powerUp)
+    public void RemovePowerUp(GameObject powerUp) // useless
     {
         pooledPowerUps.Remove(powerUp);
         SetDataAsDirty();

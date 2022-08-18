@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Agate.MVC.Base;
+using Agate.MVC.Core;
+using UnityEngine.Events;
+using System;
 
-public class EnemyPoolView : MonoBehaviour
+public class EnemyPoolView : BaseView
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] public GameObject enemyPrefab;
+    UnityAction _onSpawnEnemy;
+    public void SetCallbacks(UnityAction onSpawnEnemy)
     {
-        
+        _onSpawnEnemy = onSpawnEnemy;
     }
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        _onSpawnEnemy?.Invoke();
     }
 }
