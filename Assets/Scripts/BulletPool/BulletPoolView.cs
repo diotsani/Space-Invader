@@ -9,14 +9,6 @@ public class BulletPoolView : ObjectView<IBulletPoolModel>
 {
     [SerializeField] public GameObject bulletPrefab;
 
-    private UnityAction _onMoveBullet;
-    private UnityAction _onPowerUp;
-
-    public void SetCallbacks(UnityAction onMoveBullet)
-    {
-        _onMoveBullet = onMoveBullet;
-    }
-
     protected override void InitRenderModel(IBulletPoolModel model)
     {
         transform.position = model.Position;
@@ -25,18 +17,5 @@ public class BulletPoolView : ObjectView<IBulletPoolModel>
     protected override void UpdateRenderModel(IBulletPoolModel model)
     {
         transform.position = model.Position;
-    }
-
-    public GameObject CreateBulltObject()
-    {
-        GameObject bullet = Instantiate(bulletPrefab, transform);
-        //bullet.SetActive(false);
-        return bullet;
-    }
-
-    private void Update()
-    {
-        _onMoveBullet?.Invoke();
-        _onPowerUp?.Invoke();
     }
 }

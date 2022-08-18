@@ -28,6 +28,5 @@ public class PowerUpPoolView : ObjectView<IPowerUpPoolModel>
     private void Update()
     {
         _onSpawnPowerUp?.Invoke();
-        //Debug.Log(_onSpawnPowerUp);
     }
 }

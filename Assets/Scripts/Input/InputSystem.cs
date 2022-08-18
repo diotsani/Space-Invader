@@ -59,9 +59,9 @@ public partial class @InputSystemManager : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""up"",
+                    ""name"": ""left"",
                     ""id"": ""0408bfff-1a01-4859-ab18-d74bd679a9b7"",
-                    ""path"": ""<Keyboard>/upArrow"",
+                    ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -70,9 +70,9 @@ public partial class @InputSystemManager : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""down"",
+                    ""name"": ""right"",
                     ""id"": ""4f4a8e5f-6859-4780-9e4d-bc44501d1178"",
-                    ""path"": ""<Keyboard>/downArrow"",
+                    ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

@@ -19,18 +19,12 @@ public class BulletPoolController : ObjectController<BulletPoolController,Bullet
         InstantiateBullet();
     }
 
-    public void OnStartPlay(StartPlayMessage messege)
-    {
-        //_view.SetCallbacks(InitPoolBullet);
-    }
-
     public void InstantiateBullet()
     {
         if (_model.pooledBullets.Count < _model.maxBullet)
         {
             for (int i = 0; i < _model.maxBullet; i++)
             {
-                //GameObject bullet = _view.CreateBulltObject();
                 BulletModel instanceBullet = new BulletModel();
                 GameObject bullet = GameObject.Instantiate(_view.bulletPrefab, _view.transform);
                 SpawnBullet(bullet);
@@ -58,7 +52,6 @@ public class BulletPoolController : ObjectController<BulletPoolController,Bullet
 
     public void InitPoolBullet(StartPlayMessage message)
     {
-        //_model.bulletCtrs[0].SpawnBulletPool();
         SpawnBulletPool();
     }
 
@@ -67,10 +60,7 @@ public class BulletPoolController : ObjectController<BulletPoolController,Bullet
         GameObject bulletPool = PoolBullet();
         if(bulletPool != null)
         {
-            //bulletPool.transform.position = space.Model.Position;
-            //_model.bulletCtrs[0].BulletPosition();
             bulletPool.SetActive(true);
-            //Debug.Log("SpawnBulletPool");
         }
     }
 
@@ -78,12 +68,10 @@ public class BulletPoolController : ObjectController<BulletPoolController,Bullet
     {
         for (int i = 0; i < _model.maxBullet; i++)
         {
-            //Debug.Log(_model.amountToPool);
             if (!_model.pooledBullets[i].activeInHierarchy)
             {
                 _model.bulletCtrs[i].BulletPosition();
                 _model.bulletCtrs[i].OnHitPowerUp();
-                //Debug.Log("PoolBullet");
                 return _model.pooledBullets[i];
             }
         }
@@ -95,25 +83,11 @@ public class BulletPoolController : ObjectController<BulletPoolController,Bullet
         _model.SpawnPoint();
         _model.AddBullet(bullet);
         bullet.SetActive(true);
-        //Debug.Log("Spawned Bullet");
     }
 
     private void AddBulletController(BulletController bc)
     {
         _model.AddBulletControls(bc);
-    }
-
-    public void OnBulletMove(StartPlayMessage message)
-    {
-        _view.SetCallbacks(BulletMove);
-        //Debug.Log("Callback Bullet Move");
-    }
-
-    public void BulletMove()
-    {
-        Debug.Log("Callback Bullet Move"); // Fungsi yang manggil harus dihapus
-        //Vector3 position = Model.Position + (Vector3.up * _model.ShootSpeed * Time.deltaTime);
-        //_model.SetPosition(position);
     }
 
     public void SetIsPowerUp(OnPowerUpMessage message)
