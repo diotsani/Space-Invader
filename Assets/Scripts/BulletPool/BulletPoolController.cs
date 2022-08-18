@@ -40,8 +40,6 @@ public class BulletPoolController : ObjectController<BulletPoolController,Bullet
 
                 instance.Init(instanceBullet, instanceViewBullet);
 
-                //Debug.Log(instance);
-
                 instance.BulletPosition();
                 instance.OnBulletMove();
 

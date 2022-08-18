@@ -18,7 +18,6 @@ public class BulletController : ObjectController<BulletController,BulletModel,IB
     public void OnBulletMove()
     {
         _view.SetCallbacks(BulletMove,HitEnemy);
-        //Debug.Log("Callback OnBulletMove");
     }
 
     public void HitEnemy() // Hit Enemy terpanggil ketika bertabrakan dengan enemy, dipanggil menggunakan fungsi callbacks

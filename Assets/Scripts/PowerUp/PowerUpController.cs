@@ -5,6 +5,7 @@ using Random = UnityEngine.Random;
 public class PowerUpController : ObjectController<PowerUpController, PowerUpModel, IPowerUpModel, PowerUpView>
 {
     BulletPoolController _bulletPool;
+
     public void Init(PowerUpModel model, PowerUpView view) //Instance multiple onject
     {
         _model = model;
@@ -46,7 +47,7 @@ public class PowerUpController : ObjectController<PowerUpController, PowerUpMode
     {
         Publish<OnPowerUpMessage>(new OnPowerUpMessage());
         // +5 durasi _model.float durasi
-        _model.DurationPU += 5;
+        //_model.DurationPU += 5;
         //Debug.Log(_model.DurationPU);
         _view.gameObject.SetActive(false);
     }
@@ -55,14 +56,13 @@ public class PowerUpController : ObjectController<PowerUpController, PowerUpMode
     {
         // + Durasi eror karena setiap powerup ter update, need fix
 
-        if (_model.DurationPU > 0) //_bulletPool.Model.IsPowerUp == true)
+        if (_bulletPool.Model.IsPowerUp == true)
         {
             _model.Timer += Time.deltaTime;
-            //Debug.Log(_model.Timer);
+            Debug.Log(_model.Timer);
             if (_model.Timer >= _model.DurationPU)
             {
-                _model.Timer = 0;//_model.DurationPU;
-                _model.DurationPU = 0;
+                _model.Timer = 0;
                 Publish<OffPowerUpMessage>(new OffPowerUpMessage());
             }
         }
