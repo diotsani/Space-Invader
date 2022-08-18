@@ -54,14 +54,16 @@ public class EnemyPoolController : ObjectController<EnemyPoolController, EnemyPo
         if(_model.EnemyKilled >= _model.MaxEnemy)
         {
             _model.Timer += Time.deltaTime;
+            Debug.Log(_model.Timer);
             if (_model.Timer >= _model.DurationSpawn)
             {
+                Debug.Log("EnemySpawn");
                 for (int i = 0; i < _model.MaxEnemy; i++)
                 {
                     SpawnEnemyPool();
-                    _model.EnemyKilled = 0;
-                    _model.Timer = 0;
                 }
+                _model.EnemyKilled = 0;
+                _model.Timer -= _model.DurationSpawn;
             }
         }
     }
@@ -92,6 +94,7 @@ public class EnemyPoolController : ObjectController<EnemyPoolController, EnemyPo
     public void OnEnemyKill(EnemyDespawnMessage message) // Int Enemy Killed +1
     {
         _model.EnemyKilled += 1;
+        Debug.Log(_model.EnemyKilled);
     }
 
     public void AddEnemyList(GameObject enemy)
