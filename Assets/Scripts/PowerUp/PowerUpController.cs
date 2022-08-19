@@ -59,7 +59,7 @@ public class PowerUpController : ObjectController<PowerUpController, PowerUpMode
         if (_bulletPool.Model.IsPowerUp == true)
         {
             _model.Timer += Time.deltaTime;
-            Debug.Log(_model.Timer);
+            //Debug.Log(_model.Timer);
             if (_model.Timer >= _model.DurationPU)
             {
                 _model.Timer = 0;

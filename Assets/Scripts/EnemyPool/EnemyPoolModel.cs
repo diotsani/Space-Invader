@@ -11,7 +11,7 @@ public class EnemyPoolModel : BaseModel,IEnemyPoolModel
     public int MaxEnemy { get; set; } = 15;
     public int EnemyKilled { get; set; }
     public float Timer { get; set; }
-    public float DurationSpawn { get; set; } = 2;
+    public float DurationSpawn { get; set; } = 2f;
     public List<GameObject> PooledEnemys { get; set; } = new List<GameObject>();
     public List<EnemyController> EnemyControllers { get; set; } = new List<EnemyController>();
     public float EnemySpeed { get; set; } = 1f;//= 3f;
